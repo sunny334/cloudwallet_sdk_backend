@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wallet</title>
+    <link rel="stylesheet" href="/walletbackend/css/base.css" />
+    <link rel="stylesheet" href="/walletbackend/css/index.css" />
+    <link rel="stylesheet" href="/walletbackend/css/app.css" />
+  </head>
+  <body>
+    <section class="todoapp">
+      <header class="header">
+        <h1>Loading...</h1>
+      </header>
+    </section>
+    <footer class="info">
+      <!--			<p>wallet: <%= account %></p>-->
+    </footer>
+    <script type="application/javascript">
+      const address = "<%= account %>";
+      const cookie = "<%= cookie %>";
+      const url = "<%= process.env.FRONTEND_URL %>";
+    </script>
+    <script type="application/javascript">
+      window.opener.postMessage(
+        {
+          address,
+          cookie,
+        },
+        '*'
+      );
+      setTimeout(
+        () => {
+          window.close();
+        },
+        address ? 0 : 1000
+      );
+    </script>
+  </body>
+</html>

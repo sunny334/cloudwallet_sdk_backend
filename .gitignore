@@ -1,0 +1,5 @@
+/node_modules
+.env
+/backend-node/.env
+access.log
+combined.log

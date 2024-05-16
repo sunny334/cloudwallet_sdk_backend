@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cloud Wallet</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1C4FE3;
+        }
+
+        :where(.container, form, .input-field, header) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: #fff;
+            padding: 35px 65px 50px 65px;
+            border-radius: 20px;
+            row-gap: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+        }
+
+        .container header {
+            height: 150px;
+            width: 150px;
+            background-image: url('images/image.gif');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container h4 {
+            font-size: 1.25rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .container p {
+            max-width: 250px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .container p a {
+            color: #1C4FE3;
+            text-decoration: none;
+        }
+
+        .container p a:hover {
+            text-decoration: underline;
+        }
+
+        form .input-field {
+            flex-direction: row;
+            column-gap: 10px;
+        }
+
+        form .input-field input {
+            height: 50px;
+            width: 200px;
+            border-radius: 13px;
+            outline: none;
+            font-size: 1.125rem;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        form .input-field input:focus {
+            box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+        }
+
+        form .input-field input::-webkit-inner-spin-button,
+        form .input-field input::-webkit-outer-spin-button {
+            display: none;
+        }
+
+        form button {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            width: 100%;
+            color: #fff;
+            font-size: 1rem;
+            border: none;
+            padding: 9px 0;
+            cursor: pointer;
+            border-radius: 15px;
+            background: #1C4FE3;
+            transition: all 0.2s ease;
+        }
+
+        form button.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        form button:hover {
+            background: #3a68ec;
+        }
+
+        .container .title {
+            color: #1C4FE3;
+            font-size: 28px;
+            font-weight: bolder;
+        }
+
+        .container .error-title {
+            color: #ee3131;
+            font-size: 28px;
+            font-weight: bolder;
+        }
+
+        .resend {
+            cursor: pointer;
+        }
+
+        .not-receive {
+            opacity: 0.6;
+        }
+
+        .not-receive:hover {
+            opacity: 1;
+        }
+
+        #msg p {
+            font-size: 17px !important;
+            color: #ee3131;
+        }
+
+        .spin {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(166, 160, 160, 0.3);
+            border-radius: 50%;
+            border-top-color: #1C4FE3;
+            animation: spin 1s ease-in-out infinite;
+            -webkit-animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="form-container">
+    <% if(error){ %>
+        <h4 class="error-title">Something Went Wrong</h4>
+        <p><%= error %></p>
+        <% if(!!locals.action){ %><a class="resend" href="<%= action %>">Try Again</a><% } %>
+    <% }else{ %>
+        <h4 class="title">Enter OTP</h4>
+        <p>We have sent you access code via SMS for mobile number verfication</p>
+        <form action="/verify-otp" id="form">
+            <input name="channel" type="hidden" value="<%= (!!locals.channel) ? channel : '' %>"/>
+            <input name="countryCode" type="hidden" value="<%= (!!locals.countryCode) ? countryCode : '' %>"/>
+            <input name="phoneNumber" type="hidden" value="<%= (!!locals.phoneNumber) ? phoneNumber : '' %>"/>
+            <div class="input-field">
+                <input type="number" placeholder="Enter OTP" autofocus="true" name="otp"/>
+            </div>
+            <button type="button" id="button">Verify</button>
+        </form>
+        <p class="not-receive">Didn't receive the code <br> <a class="resend" onclick="window.location.reload()">Resend
+                code</a></p>
+    <% } %>
+</div>
+<div class="container " id="loading" style="height: 200px;width: 400px;display: none">
+    <div class='spin'></div>
+    <div id="msg">
+    </div>
+</div>
+<script src="./assets/js/jquery.min.js"></script>
+<script>
+    const url = "<%= process.env.FRONTEND_URL %>";
+    let current = 0;
+    $('#loading').css('display','none');
+    loading = false;
+    $('#button').click(function (e) {
+        e.preventDefault();
+        $('#form-container').hide();
+        $('#loading').css('display','flex');
+        loading = true;
+        // ajax request
+        $.ajax({
+            url: '/verify-otp',
+            type: 'POST',
+            data: $('#form').serialize(),
+            success: function (data) {
+                console.log("data", data)
+                if (data.error) {
+                    $('#loading').css('display','none');
+                    $('#form-container').show();
+                } else {
+                    $('#loading').css('display','none');
+                    $('#form-container').show();
+                    loading = false;
+                    window.opener.postMessage(
+                        {
+                            address: data.address,
+                            cookie: data.cookie,
+                        }, '*');
+                    setTimeout(
+                        () => {
+                            window.close();
+                        },
+                        data.address ? 0 : 1000
+                    );
+                }
+            }
+        });
+        current = 0;
+    })
+    const msgs = ['Creating Your Wallet', 'Funding Your Wallet', 'Minting Your Tests', 'Finalizing'];
+    setInterval(() => {
+        if (loading) {
+            $('#msg').html(`<p>${msgs[current]}...</p>`);
+            console.log("current", current, msgs.length)
+            current = current === msgs.length - 1 ? 0 : current + 1
+        }
+    }, 2000)
+</script>
+</body>
+</html>

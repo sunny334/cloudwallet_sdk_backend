@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cloud Wallet</title>
+		<link rel="stylesheet" href="/walletbackend/css/base.css">
+		<link rel="stylesheet" href="/walletbackend/css/index.css">
+		<link rel="stylesheet" href="/walletbackend/css/home.css">
+	</head>
+	<body>
+		<section class="todohome">
+			<header>
+				<h1>Cloud Wallet</h1>
+			</header>
+			<section>
+				<button class="button" onclick="goto()">Main Page</button>
+			</section>
+		</section>
+		<script>
+			function goto() {
+				const url= '<%= process.env.FRONTEND_URL %>';
+				window.location = url
+			}
+		</script>
+	</body>
+</html>
