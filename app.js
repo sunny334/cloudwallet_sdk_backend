@@ -12,8 +12,8 @@ var passport = require("passport");
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
-var smsRouter = require("./routes/sms_auth");
-var apiSMSRouter = require("./routes/api_sms_auth");
+// var smsRouter = require("./routes/sms_auth");
+// var apiSMSRouter = require("./routes/api_sms_auth");
 var configRouter = require("./routes/config");
 const cors = require("cors");
 const sessionStore = MongoStore.create({
@@ -55,7 +55,7 @@ app.set("port", port);
 app.use(cors());
 app.use("/", indexRouter);
 // app.use("/", smsRouter);
-app.use("/api/", apiSMSRouter);
+// app.use("/api/", apiSMSRouter);
 app.use("/", configRouter.router);
 
 // catch 404 and forward to error handler
