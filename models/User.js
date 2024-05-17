@@ -26,10 +26,6 @@ const userSchema = new mongoose.Schema({
   walletAddress: {
     type: String,
   },
-  faucet: {
-    type: Boolean,
-    default: false
-  },
   createdAt: {
     type: Date,
     default: Date.now,

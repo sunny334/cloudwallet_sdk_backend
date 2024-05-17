@@ -26,6 +26,8 @@ const socketIOs = require("socket.io");
 
 var port = normalizePort(process.env.PORT || "3001");
 console.log("port " + port)
+app.set("port", port);
+app.use(cors());
 app.options("*", cors());
 // app.use(
 //   cors({
@@ -68,8 +70,9 @@ socketIO.on("connection", (socket) => {
         let res = {};
         try {
             const decoded = jwt.verify(msg.cookie, process.env.JWT_SECRET);
-            if (decoded.profileId && msg.id) {
-                let exist = await User.findOne({phone: decoded.profileId, provider: 'sms'});
+            if (decoded.email && decoded.profileId && msg.id) {
+
+                let exist = await User.findOne({email: decoded.email});
                 if (exist) {
                     // const privateKey = toUtf8(msg.profileId + exist.salt);
                     const privateKey = decoded.profileId + exist.salt;

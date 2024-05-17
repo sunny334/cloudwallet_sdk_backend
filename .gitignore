@@ -1,5 +1,11 @@
-/node_modules
 .env
-/backend-node/.env
-access.log
-combined.log
+var
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Mac OS X
+.DS_Store
+
+/bin/logs

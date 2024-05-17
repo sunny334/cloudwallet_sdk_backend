@@ -11,11 +11,14 @@ var session = require("express-session");
 var passport = require("passport");
 var logger = require("morgan");
 
+// pass the session to the connect sqlite3 module
+// allowing it to inherit from session.Store
+// var SQLiteStore = require('connect-sqlite3')(session);
+
 var indexRouter = require("./routes/index");
-// var smsRouter = require("./routes/sms_auth");
-// var apiSMSRouter = require("./routes/api_sms_auth");
-var configRouter = require("./routes/config");
-const cors = require("cors");
+var authRouter = require("./routes/auth");
+var fbRouter = require("./routes/fb_auth");
+var smsRouter = require("./routes/sms_auth");
 const sessionStore = MongoStore.create({
   mongoUrl: process.env.MONGO_URL,
   ttl: 20000,
@@ -25,7 +28,9 @@ var app = express();
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
 app.locals.pluralize = require("pluralize");
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -49,14 +54,23 @@ app.use(logger('combined', { stream: accessLogStream }))
 
 // app.use(csrf());
 app.use(passport.authenticate("session"));
-var port = normalizePort(process.env.PORT || "3001");
+// app.use(function (req, res, next) {
+//   var msgs = req.session.messages || [];
+//   res.locals.messages = msgs;
+//   res.locals.hasMessages = !!msgs.length;
+//   req.session.messages = [];
+//     res.send(false)
+//   next();
+// });
+// app.use(function (req, res, next) {
+//   // res.locals.csrfToken = req.csrfToken();
+//   next();
+// });
 
-app.set("port", port);
-app.use(cors());
 app.use("/", indexRouter);
-// app.use("/", smsRouter);
-// app.use("/api/", apiSMSRouter);
-app.use("/", configRouter.router);
+app.use("/", authRouter);
+app.use("/", fbRouter);
+app.use("/", smsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -73,21 +87,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
-function normalizePort(val) {
-    var port = parseInt(val, 10);
-
-    if (isNaN(port)) {
-        // named pipe
-        return val;
-    }
-
-    if (port >= 0) {
-        // port number
-        return port;
-    }
-
-    return false;
-}
 
 module.exports = app;
