@@ -102,14 +102,14 @@ router.get(
         passport.authenticate("google", (err, user, info) => {
             if (err) {
                 // Handle error condition
-                console.error(err);
+                console.error("redirect error",err);
                 logger(err);
                 // throw err;
                 return next(err); // Forward the error to the error handler
             }
             if (!user) {
                 // Authentication failed
-                console.log(info); // Debugging information
+                console.log("user not found",info); // Debugging information
                 return res.redirect("/login/federated/google");
             }
             // Authentication succeeded

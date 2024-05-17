@@ -1,0 +1,5 @@
+::1 - - [17/May/2024:08:52:08 +0000] "GET / HTTP/1.1" 200 683 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+::1 - - [17/May/2024:08:52:08 +0000] "GET /walletbackend/css/base.css HTTP/1.1" 404 1333 "http://localhost:8081/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+::1 - - [17/May/2024:08:52:09 +0000] "GET /walletbackend/css/index.css HTTP/1.1" 404 1333 "http://localhost:8081/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+::1 - - [17/May/2024:08:52:09 +0000] "GET /walletbackend/css/home.css HTTP/1.1" 404 1333 "http://localhost:8081/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+::1 - - [17/May/2024:08:52:12 +0000] "GET /favicon.ico HTTP/1.1" 404 1333 "http://localhost:8081/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
