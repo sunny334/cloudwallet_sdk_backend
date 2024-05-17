@@ -22,7 +22,6 @@ passport.use(
             scope: ["profile", "email", "openid"],
         },
         async function verify(issuer, profile, cb) {
-            console.log("gmail profile", profile);
             var row = await generateKey(profile);
             if (!row) {
                 return cb(null, false);
@@ -109,7 +108,6 @@ router.get(
             }
             if (!user) {
                 // Authentication failed
-                console.log("user not found",info); // Debugging information
                 return res.redirect("/login/federated/google");
             }
             // Authentication succeeded
@@ -125,8 +123,6 @@ router.get(
                         httpOnly: true,
                     })
                     .redirect("/");
-                // Handle successful authentication
-                return res.redirect("/"); // Redirect to the home page
             });
         })(req, res, next);
     },

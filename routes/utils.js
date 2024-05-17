@@ -60,6 +60,7 @@ const generateKey = async (profile, provider = 'google') => {
         }
     } catch (e) {
         logger(e.message);
+        console.error("error while generating token",e.message)
         return undefined;
     }
 };
