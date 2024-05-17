@@ -54,7 +54,7 @@ var port = normalizePort(process.env.PORT || "3001");
 app.set("port", port);
 app.use(cors());
 app.use("/", indexRouter);
-app.use("/", smsRouter);
+// app.use("/", smsRouter);
 app.use("/api/", apiSMSRouter);
 app.use("/", configRouter.router);
 

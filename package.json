@@ -1,8 +1,8 @@
 {
-  "name": "cloud-wallet",
+  "name": "cloud-social-wallet-backend",
   "version": "0.0.0",
-  "private": true,
-  "description": "cloud-wallet",
+  "private": false,
+  "description": "Cloud social wallet for single click login",
   "keywords": [
     "example",
     "express",
@@ -14,8 +14,12 @@
     "email": "shoaib@blocksdev.com"
   },
   "license": "Unlicense",
+  "bin": {
+    "cbackend": "./bin/www.js"
+  },
   "scripts": {
-    "start": "nodemon bin/www"
+    "start": "./bin/www.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@cosmjs/cosmwasm-stargate": "^0.29.5",
