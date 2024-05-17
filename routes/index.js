@@ -25,7 +25,7 @@ router.get(
     fetchTodos,
     async function (req, res, next) {
         const privateKey = toUtf8(req.user.privateKey);
-        const wallet = await DirectSecp256k1Wallet.fromKey(privateKey, "juno");
+        const wallet = await DirectSecp256k1Wallet.fromKey(privateKey, process.env.CHAIN_PREFIX ?? "juno");
         let account = await wallet.getAccounts().then((res) => {
             return res[0]?.address;
         });
