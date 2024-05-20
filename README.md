@@ -27,4 +27,4 @@ Start the server.
 npm start
 ```
 
-Navigate to [`http://localhost:8081`](http://localhost:8081).
+Navigate to [`http://localhost:8081`](http://localhost:8081)
