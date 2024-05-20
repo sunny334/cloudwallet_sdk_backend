@@ -8,6 +8,7 @@ To run this app, clone the repository and install dependencies:
  npm install
 ```
 
+export ENV
 ```
 MONGO_URL=""
 GOOGLE_CLIENT_ID=
