@@ -6,7 +6,7 @@
   "homepage": "https://github.com/sunny334/cloudwallet_sdk_backend",
   "repository": {
     "type": "git",
-    "url": "git:github.com/sunny334/cloudwallet_sdk_backend"
+    "url": "git://github.com/sunny334/cloudwallet_sdk_backend"
   },
   "license": "Unlicense",
   "scripts": {
