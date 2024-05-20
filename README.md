@@ -5,18 +5,26 @@
 To run this app, clone the repository and install dependencies:
 
 ```bash
-$ npm install
+ npm install
 ```
 
 ```
-GOOGLE_CLIENT_ID=__INSERT_CLIENT_ID_HERE__
-GOOGLE_CLIENT_SECRET=__INSERT_CLIENT_SECRET_HERE__
+MONGO_URL=""
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+FRONTEND_URL=
+JWT_SECRET=
+SOCKET_URL=
+PORT=8081
+CHAIN_PREFIX=
+FB_CLIENT_ID=
+FB_CLIENT_SECRET=
 ```
 
 Start the server.
 
 ```bash
-$ npm start
+npm start
 ```
 
-Navigate to [`http://localhost:3000`](http://localhost:3000).
+Navigate to [`http://localhost:8081`](http://localhost:8081).
