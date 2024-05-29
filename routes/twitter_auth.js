@@ -7,8 +7,8 @@ const {signToken} = require("../auth/utils");
 
 passport.use(
     new TwitterStrategy({
-            clientID: process.env["TWITTER_CLIENT_ID"],
-            clientSecret: process.env["TWITTER_APP_SECRET"],
+            consumerKey: process.env["TWITTER_CLIENT_ID"],
+            consumerSecret: process.env["TWITTER_APP_SECRET"],
             callbackURL: process.env.SOCKET_URL + "/auth/twitter/callback",
             profileFields: ['id', 'displayName', 'email', 'profileUrl'],
         },
