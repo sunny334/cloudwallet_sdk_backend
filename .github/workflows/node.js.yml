@@ -14,4 +14,4 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - run: docker build -t backend . && docker stop $(docker ps -q) && docker run --env-file .env -d --network host backend:latest && docker container prune -f
+    - run: docker build -t backend . && docker run --env-file .env -d --network host backend:latest && docker container prune -f
