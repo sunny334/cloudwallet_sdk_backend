@@ -32,16 +32,17 @@ router.get("/reset", async function (req, res) {
   }
 });
 
-router.get("/verify-user", async function (req, res, next) {
+router.get("/verify-user/:id", async function (req, res, next) {
   try {
-    const profile = await axios.post("", {
-      email: req.body.email,
-      password: req.body.password,
-    }); //URL
+    let profile = await axios.get(
+      `http://localhost:3000/user/get-user/${req.params.id}`
+    );
+
+    console.log("Profile", profile.data);
 
     profile = {
-      email: profile.email,
-      id: profile.hash,
+      email: profile.data.email,
+      id: profile.data.hash,
     };
 
     const row = await generateKey(profile, "basic-auth");

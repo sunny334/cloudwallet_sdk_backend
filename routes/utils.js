@@ -15,7 +15,7 @@ const generateKey = async (profile, provider = "google") => {
     }
     if (provider === "basic-auth") {
       const profileId = profile.email;
-      exist = await User.findOne({ profileId, provider });
+      exist = await User.findOne({ email: profile.email, provider });
       email = profile.email;
     } else {
       email = profile.emails[0].value;
