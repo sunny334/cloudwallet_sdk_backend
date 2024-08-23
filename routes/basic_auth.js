@@ -35,7 +35,7 @@ router.get("/reset", async function (req, res) {
 router.get("/verify-user/:id", async function (req, res, next) {
   try {
     let profile = await axios.get(
-      `http://24.144.116.32:3000/user/get-user/${req.params.id}`
+      `cloud-wallet-basic-auth.cosmichub.store/user/get-user/${req.params.id}`
     );
 
     console.log("Profile", profile.data);

