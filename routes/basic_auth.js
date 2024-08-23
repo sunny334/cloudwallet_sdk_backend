@@ -7,17 +7,26 @@ const { toUtf8 } = require("@cosmjs/encoding");
 const { DirectSecp256k1Wallet } = require("@cosmjs/proto-signing");
 const { default: axios } = require("axios");
 
-const { TWILIO_SERVICE_SID, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN } =
-  process.env;
-
-const client = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, {
-  lazyLoading: true,
+var router = express.Router();
+router.get("/register", async function (req, res) {
+  try {
+    res.render("basic-auth/register");
+  } catch (e) {
+    logger(e.message);
+  }
 });
 
-var router = express.Router();
-router.get("/basic-auth", async function (req, res) {
+router.get("/auth", async function (req, res) {
   try {
-    res.render("basic-auth/basic-auth");
+    res.render("basic-auth/login");
+  } catch (e) {
+    logger(e.message);
+  }
+});
+
+router.get("/reset", async function (req, res) {
+  try {
+    res.render("basic-auth/reset-password");
   } catch (e) {
     logger(e.message);
   }

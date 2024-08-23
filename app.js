@@ -18,6 +18,7 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var authRouter = require("./routes/auth");
 var twitterRouter = require("./routes/twitter_auth");
+var basic = require("./routes/basic_auth");
 // var fbRouter = require("./routes/fb_auth");
 // var smsRouter = require("./routes/sms_auth");
 const sessionStore = MongoStore.create({
@@ -71,6 +72,7 @@ app.use(passport.authenticate("session"));
 app.use("/", indexRouter);
 app.use("/", authRouter);
 app.use("/", twitterRouter);
+app.use("/", basic);
 // app.use("/", fbRouter);
 // app.use("/", smsRouter);
 

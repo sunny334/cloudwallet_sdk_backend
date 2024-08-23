@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cloud Wallet</title>
+	<style>
+		@import url("https://fonts.googleapis.com/css2?family=Poppins");
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Poppins', sans-serif;
+		}
+		body {
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: #4FAAF4;
+		}
+		:where(.container, form, .input-field, header) {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.container {
+			background: #fff;
+			padding: 35px 35px 50px 35px;
+			border-radius: 20px;
+			row-gap: 20px;
+			width: 450px;
+			box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+		}
+		.container header{
+			height: 150px;
+			width: 250px;
+			background-image: url('images/image.gif');
+			background-size: cover;
+			background-position: center;
+		}
+		.container h4 {
+			font-size: 1.25rem;
+			color: #333;
+			font-weight: 500;
+		}
+		.container p {
+			max-width: 550px;
+			text-align: center;
+			font-size: 13px;
+		}
+		.container p a {
+			color: #4FAAF4;
+			text-decoration: none;
+		}
+		.container p a:hover {
+			text-decoration: underline;
+		}
+		form{
+			width: 100%;
+		}
+		form .input-field, form .input-field label {
+			width: 100%;
+			flex-direction: column;
+		}
+		
+		form .input-field input {
+			height: 50px;
+			width: 100%;
+			outline: none;
+			/* border-top-right-radius: 10px; */
+			/* border-bottom-right-radius: 10px; */
+			border-radius: 10px;
+			font-size: 1.125rem;
+			padding-left: 10px;
+			padding: 10px;
+			font-weight: bold;
+			border: 1px solid #ddd;
+		}
+		form .input-field input:focus {
+			box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+		}
+		form .input-field input::-webkit-inner-spin-button,
+		form .input-field input::-webkit-outer-spin-button {
+			display: none;
+		}
+		form .button{
+			margin-top: 40px;
+			width: 100%;
+			color: #fff;
+			font-size: 1rem;
+			border: none;
+			padding: 9px 0;
+			border-radius: 15px;
+			background: #4FAAF4;
+			transition: all 0.2s ease;
+			cursor: pointer;
+		}
+		form button.active {
+			opacity: 1;
+			pointer-events: auto;
+		}
+		form button:hover {
+			background: #287ED4;
+		}
+
+		
+		.sprites {
+			position: absolute;
+			width: 0;
+			height: 0;
+			pointer-events: none;
+			user-select: none;
+		}
+		.button{
+			cursor: pointer !important;
+		}
+		.input-field{
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<h4>Register</h4>
+	<form action="/register">
+		<div class="input-field">
+			<label>
+				Email
+			</label>
+			<label>
+				<input type="text" name="email" value="" autofocus placeholder="Email" />
+			</label>
+		</div>
+		<div class="input-field input-field-password">
+			<label>
+				Password
+			</label>
+			<label>
+				<input type="password" name="password" value="" placeholder="password" />
+			</label>
+		</div>
+		<input type="submit" value="Submit" class="button" />
+<!--		<button type="submit">Submit</button>-->
+	</form>
+</div>
+</body>
+</html>
