@@ -161,7 +161,7 @@
             'input[name="password"]'
           ).value;
 
-          fetch(`${process.env["BakckEND_API"]}/user/`, {
+          fetch(`http://24.144.116.32:3000/user/`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
