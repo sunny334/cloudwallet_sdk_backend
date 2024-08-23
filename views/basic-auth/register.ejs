@@ -161,16 +161,19 @@
             'input[name="password"]'
           ).value;
 
-          fetch(`cloud-wallet-basic-auth.cosmichub.store/user/register`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email: email,
-              password: password,
-            }),
-          })
+          fetch(
+            `https://cloud-wallet-basic-auth.cosmichub.store/user/register`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                email: email,
+                password: password,
+              }),
+            }
+          )
             .then((response) => response.json())
             .then((data) => {
               window.location.href = `/login/verify-user/${data._id}`;
