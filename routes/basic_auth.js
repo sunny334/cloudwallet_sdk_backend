@@ -24,9 +24,10 @@ router.get("/auth", async function (req, res) {
   }
 });
 
-router.get("/reset", async function (req, res) {
+router.get("/reset/:id", async function (req, res) {
   try {
-    res.render("basic-auth/reset-password");
+    const id = req.params.id;
+    res.render(`basic-auth/reset-password`, {id});
   } catch (e) {
     logger(e.message);
   }
