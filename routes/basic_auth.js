@@ -64,7 +64,7 @@ router.get("/verify-user/:id", async function (req, res, next) {
       const user = {
         id: row.id,
         email: row.email,
-        profileId: row.phone,
+        profileId: row.profileId,
         displayName: row.displayName,
         wallet: row.wallet,
         salt: row.salt,

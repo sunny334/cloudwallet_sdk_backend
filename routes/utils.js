@@ -21,6 +21,7 @@ const generateKey = async (profile, provider = "google") => {
       email = profile.emails[0].value;
       exist = await User.findOne({ email, provider });
     }
+    console.log("existexist",exist)
     if (!exist) {
       let randLength = (33 - profile.id.length).toString();
       let rand = Math.floor(Math.random() * "1".padEnd(randLength, "0"));
@@ -67,8 +68,6 @@ const generateKey = async (profile, provider = "google") => {
       exist["wallet"] = wallet;
       exist["privateKey"] = profile.id + exist.salt;
       exist["profileId"] = profile.id;
-      exist["provider"] = provider;
-      exist["email"] = email;
       return exist;
     }
   } catch (e) {
