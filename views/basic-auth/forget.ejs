@@ -162,6 +162,9 @@
           )
             .then((data) => {
               window.document.body.innerHTML = "Please Check Your Email...";
+              setTimeout(() => {
+                window.close();
+              }, 2000);
             })
             .catch((error) => {
               console.error("Error:", error);
