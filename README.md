@@ -10,14 +10,14 @@ To run this app, clone the repository and install dependencies:
 
 export ENV
 ```
-MONGO_URL=""
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
-FRONTEND_URL=
-JWT_SECRET=
-SOCKET_URL=
-PORT=8081
-CHAIN_PREFIX=
+export MONGO_URL=""
+export GOOGLE_CLIENT_ID=
+export GOOGLE_CLIENT_SECRET=
+export FRONTEND_URL=
+export JWT_SECRET=
+export SOCKET_URL=
+export PORT=8081
+export CHAIN_PREFIX=
 FB_CLIENT_ID=
 FB_CLIENT_SECRET=
 ```
