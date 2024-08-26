@@ -121,9 +121,9 @@
       }
     </style>
   </head>
-  <body>
+  <body id="body">
     <div class="container">
-      <h4>Login</h4>
+      <h4>Reset Password</h4>
       <form id="registerForm">
         <div class="input-field">
           <label> Email </label>
@@ -137,18 +137,7 @@
             />
           </label>
         </div>
-        <div class="input-field input-field-password">
-          <label> Password </label>
-          <label>
-            <input
-              type="password"
-              name="password"
-              value=""
-              placeholder="Password"
-            />
-          </label>
-        </div>
-        <div><a href="/forget">Forget Password?</a></div>
+
         <input type="button" id="submitBtn" value="Submit" class="button" />
       </form>
     </div>
@@ -158,24 +147,23 @@
         .getElementById("submitBtn")
         .addEventListener("click", function () {
           const email = document.querySelector('input[name="email"]').value;
-          const password = document.querySelector(
-            'input[name="password"]'
-          ).value;
 
-          fetch(`https://cloud-wallet-basic-auth.cosmichub.store/user/`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email: email,
-              password: password,
-            }),
-          })
+          fetch(
+            `https://cloud-wallet-basic-auth.cosmichub.store/user/forget-password`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                email: email,
+              }),
+            }
+          )
             .then((response) => response.json())
             .then((data) => {
-              window.location.href = `/login/verify-user/${data._id}`;
-              // Handle success (e.g., display a message or redirect)
+              window.document.getElementById("body").innerHTML =
+                "Please Check Your Email...";
             })
             .catch((error) => {
               console.error("Error:", error);
