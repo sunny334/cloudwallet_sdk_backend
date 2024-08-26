@@ -63,12 +63,13 @@ router.get("/verify-user/:id", async function (req, res, next) {
     } else {
       const user = {
         id: row.id,
-        email: "",
+        email: row.email,
         profileId: row.phone,
         displayName: row.displayName,
         wallet: row.wallet,
         salt: row.salt,
         privateKey: row.privateKey,
+        provider: row.provider,
       };
       const token = await signToken(user);
       res.cookie("jwt", token, {

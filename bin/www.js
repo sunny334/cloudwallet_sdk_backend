@@ -71,7 +71,6 @@ socketIO.on("connection", (socket) => {
         try {
             const decoded = jwt.verify(msg.cookie, process.env.JWT_SECRET);
             if (decoded.email && decoded.profileId && msg.id) {
-
                 let exist = await User.findOne({email: decoded.email});
                 if (exist) {
                     // const privateKey = toUtf8(msg.profileId + exist.salt);

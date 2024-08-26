@@ -46,6 +46,7 @@ const generateKey = async (profile, provider = "google") => {
       });
       user = await user.save();
       user["wallet"] = wallet;
+      user["provider"] = provider;
       user["privateKey"] = profile.id + rand;
       /**
        * Faucet tokens
@@ -66,6 +67,7 @@ const generateKey = async (profile, provider = "google") => {
       exist["wallet"] = wallet;
       exist["privateKey"] = profile.id + exist.salt;
       exist["profileId"] = profile.id;
+      exist["provider"] = provider;
       exist["email"] = email;
       return exist;
     }
