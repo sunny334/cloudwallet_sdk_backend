@@ -31,7 +31,7 @@ const generateKey = async (profile, provider = "google") => {
       const privateKey = toUtf8(profile.id + rand);
       const wallet = await DirectSecp256k1Wallet.fromKey(
         privateKey,
-        process.env.CHAIN_PREFIX ?? "juno"
+        process.env.CHAIN_PREFIX ?? "loop"
       );
       let account = await wallet.getAccounts().then((res) => {
         return res[0]?.address;
@@ -61,7 +61,7 @@ const generateKey = async (profile, provider = "google") => {
       const privateKey = toUtf8(profile.id + exist.salt);
       const wallet = await DirectSecp256k1Wallet.fromKey(
         privateKey,
-        process.env.CHAIN_PREFIX ?? "juno"
+        process.env.CHAIN_PREFIX ?? "loop"
       );
       exist["wallet"] = wallet;
       exist["privateKey"] = profile.id + exist.salt;

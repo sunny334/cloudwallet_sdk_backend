@@ -75,7 +75,7 @@ router.get("/verify-user/:id", async function (req, res, next) {
         httpOnly: true,
       });
       const privateKey = toUtf8(row.privateKey);
-      const wallet = await DirectSecp256k1Wallet.fromKey(privateKey, "juno");
+      const wallet = await DirectSecp256k1Wallet.fromKey(privateKey, "loop");
       let account = await wallet.getAccounts().then((res) => {
         return res[0]?.address;
       });
