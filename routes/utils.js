@@ -13,7 +13,7 @@ const generateKey = async (profile, provider = "google") => {
       exist = await User.findOne({ profileId, provider });
       obj = { countryCode: profile.countryCode, phone: profile.phone };
     }
-    if (provider === "basic-auth") {
+    else if (provider === "basic-auth") {
       const profileId = profile.email;
       exist = await User.findOne({ email: profile.email, provider });
       email = profile.email;
