@@ -60,6 +60,7 @@ const generateKey = async (profile, provider = "google") => {
 
       return user;
     } else {
+      console.log("profile",profile)
       const privateKey = toUtf8(profile.id + exist.salt);
       const wallet = await DirectSecp256k1Wallet.fromKey(
         privateKey,
