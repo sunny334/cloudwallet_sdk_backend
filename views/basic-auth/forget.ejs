@@ -121,7 +121,7 @@
       }
     </style>
   </head>
-  <body id="body">
+  <body>
     <div class="container">
       <h4>Reset Password</h4>
       <form id="registerForm">
@@ -160,10 +160,8 @@
               }),
             }
           )
-            .then((response) => response.json())
             .then((data) => {
-              window.document.getElementById("body").innerHTML =
-                "Please Check Your Email...";
+              window.document.body.innerHTML = "Please Check Your Email...";
             })
             .catch((error) => {
               console.error("Error:", error);
