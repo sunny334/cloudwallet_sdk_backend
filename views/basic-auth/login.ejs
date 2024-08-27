@@ -87,7 +87,7 @@
         display: none;
       }
       form .button {
-        margin-top: 40px;
+        margin-top: 20px;
         width: 100%;
         color: #fff;
         font-size: 1rem;
@@ -119,6 +119,25 @@
       .input-field {
         margin-top: 10px;
       }
+      .loader {
+    width: 35px;
+    height: 35px;
+    border: 5px solid #FFF;
+    border-bottom-color: #423e3e;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
     </style>
   </head>
   <body>
@@ -149,14 +168,20 @@
           </label>
         </div>
         <div><a href="/login/forget">Forget Password?</a></div>
-        <input type="button" id="submitBtn" value="Submit" class="button" />
+        <button type="button" id="submitBtn" class="button" >Submit</button>
       </form>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
     <script>
+      function loading(status = true){
+        $('#submitBtn').html(status ? '<span class="loader"></span>' : 'Submit');
+      }
+      $('#submitBtn').html('<span class="loader"></span>');
       document
         .getElementById("submitBtn")
         .addEventListener("click", function () {
+          loading();
+          return;
           const email = document.querySelector('input[name="email"]').value;
           const password = document.querySelector(
             'input[name="password"]'
@@ -179,7 +204,10 @@
             })
             .catch((error) => {
               console.error("Error:", error);
+          loading(false);
               // Handle error (e.g., display an error message)
+            }).finally(()=> {
+          loading(false);
             });
         });
     </script>
