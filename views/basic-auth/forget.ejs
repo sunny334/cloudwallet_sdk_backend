@@ -87,7 +87,10 @@
         display: none;
       }
       form .button {
-        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
         width: 100%;
         color: #fff;
         font-size: 1rem;
@@ -119,6 +122,25 @@
       .input-field {
         margin-top: 10px;
       }
+      .loader {
+        width: 32px;
+        height: 32px;
+        border: 5px solid #fff;
+        border-bottom-color: #423e3e;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+      }
+
+      @keyframes rotation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body>
@@ -137,17 +159,27 @@
             />
           </label>
         </div>
-
-        <input type="button" id="submitBtn" value="Submit" class="button" />
+        <button type="button" id="submitBtn" class="button">Submit</button>
       </form>
     </div>
-
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function loading(status = true) {
+        $("#submitBtn").html(
+          status ? '<span class="loader"></span>' : "Submit"
+        );
+      }
+    </script>
     <script>
       document
         .getElementById("submitBtn")
         .addEventListener("click", function () {
+          loading();
           const email = document.querySelector('input[name="email"]').value;
-
           fetch(
             `https://cloud-wallet-basic-auth.cosmichub.store/user/forget-password`,
             {
@@ -167,8 +199,12 @@
               }, 2000);
             })
             .catch((error) => {
+              loading(false);
               console.error("Error:", error);
               // Handle error (e.g., display an error message)
+            })
+            .finally(() => {
+              loading(false);
             });
         });
     </script>
