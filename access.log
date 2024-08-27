@@ -273,3 +273,5 @@
 ::1 - - [27/Aug/2024:07:52:54 +0000] "GET /login/reset/123456 HTTP/1.1" 200 6556 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
 ::1 - - [27/Aug/2024:07:53:17 +0000] "GET /login/reset/123456 HTTP/1.1" 200 6500 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
 ::1 - - [27/Aug/2024:07:54:37 +0000] "GET /login/reset/123456 HTTP/1.1" 200 6478 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+::1 - - [27/Aug/2024:07:56:20 +0000] "GET /login/auth HTTP/1.1" 200 5976 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+::1 - - [27/Aug/2024:07:56:50 +0000] "GET /login/auth HTTP/1.1" 200 8057 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
