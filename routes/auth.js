@@ -22,6 +22,7 @@ passport.use(
             scope: ["profile", "email", "openid"],
         },
         async function verify(issuer, profile, cb) {
+            console.log("profile",profile)
             var row = await generateKey(profile);
             if (!row) {
                 return cb(null, false);
