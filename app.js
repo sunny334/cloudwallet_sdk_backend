@@ -77,7 +77,7 @@ app.use("/", authRouter);
 app.use("/", twitterRouter);
 app.use("/login", basic);
 // app.use("/", fbRouter);
-// app.use("/", smsRouter); 
+app.use("/", smsRouter); 
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
