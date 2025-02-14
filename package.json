@@ -10,7 +10,7 @@
   },
   "license": "Unlicense",
   "scripts": {
-    "start": "nodemon ./bin/www.js"
+    "start": "node ./bin/www.js"
   },
   "dependencies": {
     "@cosmjs/cosmwasm-stargate": "^0.29.5",
