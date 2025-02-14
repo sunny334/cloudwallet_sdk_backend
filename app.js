@@ -17,10 +17,10 @@ var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 var authRouter = require("./routes/auth");
-var twitterRouter = require("./routes/twitter_auth");
+// var twitterRouter = require("./routes/twitter_auth");
 var basic = require("./routes/basic_auth");
 // var fbRouter = require("./routes/fb_auth");
-var smsRouter = require("./routes/sms_auth");
+// var smsRouter = require("./routes/sms_auth");
 const sessionStore = MongoStore.create({
   mongoUrl: process.env.MONGO_URL,
   ttl: 20000,
@@ -74,10 +74,10 @@ app.use(passport.authenticate("session"));
 
 app.use("/", indexRouter);
 app.use("/", authRouter);
-app.use("/", twitterRouter);
+// app.use("/", twitterRouter);
 app.use("/login", basic);
 // app.use("/", fbRouter);
-app.use("/", smsRouter); 
+// app.use("/", smsRouter); 
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
