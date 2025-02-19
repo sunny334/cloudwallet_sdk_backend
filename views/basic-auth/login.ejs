@@ -124,6 +124,9 @@
       }
       .forget {
         margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
       }
       .loader {
         width: 32px;
@@ -173,7 +176,10 @@
             />
           </label>
         </div>
-        <div class="forget"><a href="/login/forget">Forget Password?</a></div>
+        <div class="forget">
+          <a href="/login/forget">Forget Password?</a>
+          <a href="/login/register">Register</a>
+        </div>
         <button type="button" id="submitBtn" class="button">Submit</button>
       </form>
     </div>

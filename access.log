@@ -276,3 +276,4 @@
 ::1 - - [27/Aug/2024:07:56:20 +0000] "GET /login/auth HTTP/1.1" 200 5976 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
 ::1 - - [27/Aug/2024:07:56:50 +0000] "GET /login/auth HTTP/1.1" 200 8057 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
 ::1 - - [27/Aug/2024:08:27:21 +0000] "GET /login/auth HTTP/1.1" 200 8525 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+::1 - - [14/Feb/2025:10:25:52 +0000] "GET /login/auth HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
